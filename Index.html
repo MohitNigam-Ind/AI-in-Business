@@ -1,0 +1,1970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI in Business: The Complete Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  :root {
+    --ink: #0f0e0c;
+    --ink2: #2c2b28;
+    --ink3: #5a5750;
+    --paper: #faf9f6;
+    --paper2: #f2f0eb;
+    --paper3: #e8e4dc;
+    --accent: #c84b2f;
+    --accent2: #1a6b4a;
+    --accent3: #1d4b8a;
+    --gold: #b87b2a;
+    --line: rgba(15,14,12,0.12);
+    --ff-head: 'Playfair Display', Georgia, serif;
+    --ff-body: 'DM Sans', system-ui, sans-serif;
+    --ff-mono: 'DM Mono', monospace;
+  }
+
+  html { scroll-behavior: smooth; }
+  
+  body {
+    font-family: var(--ff-body);
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1.75;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--ink);
+    color: var(--paper);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg-art {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  .hero-nav {
+    position: relative;
+    z-index: 10;
+    padding: 2rem 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px solid rgba(255,255,255,0.1);
+  }
+
+  .hero-nav .brand {
+    font-family: var(--ff-mono);
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .hero-nav .meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+  }
+
+  .hero-body {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 4rem 4rem 3rem;
+    max-width: 1100px;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 1px;
+    background: var(--accent);
+  }
+
+  .hero-title {
+    font-family: var(--ff-head);
+    font-size: clamp(3rem, 6vw, 6.5rem);
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    color: var(--paper);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .hero-subtitle {
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+    max-width: 620px;
+    line-height: 1.65;
+  }
+
+  .hero-stats-row {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 0.5px solid rgba(255,255,255,0.1);
+  }
+
+  .hero-stat {
+    padding: 2rem;
+    border-right: 0.5px solid rgba(255,255,255,0.1);
+  }
+
+  .hero-stat:last-child { border-right: none; }
+
+  .hero-stat .num {
+    font-family: var(--ff-head);
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--paper);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .hero-stat .num span { color: var(--accent); }
+
+  .hero-stat .label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 4rem;
+  }
+
+  .article-body {
+    padding: 5rem 0;
+  }
+
+  /* ── TOC ── */
+  .toc-block {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 3rem 4rem;
+    margin-bottom: 5rem;
+  }
+
+  .toc-title {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 1.5rem;
+  }
+
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+
+  .toc-item {
+    padding: 1rem 0;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .toc-item:hover { opacity: 0.6; }
+
+  .toc-item:nth-child(3n+1):nth-child(3n+1) { padding-right: 2rem; }
+  .toc-item:nth-child(3n+2) { padding-left: 1rem; padding-right: 1rem; border-left: 0.5px solid rgba(255,255,255,0.08); }
+  .toc-item:nth-child(3n) { padding-left: 2rem; border-left: 0.5px solid rgba(255,255,255,0.08); }
+
+  .toc-num {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: var(--accent);
+    min-width: 24px;
+  }
+
+  .toc-text {
+    font-size: 14px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.35;
+  }
+
+  /* ── CHAPTER HEADERS ── */
+  .chapter {
+    margin-bottom: 6rem;
+  }
+
+  .chapter-header {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+
+  .chapter-num {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .chapter-num::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--ink3);
+  }
+
+  .chapter-title {
+    font-family: var(--ff-head);
+    font-size: clamp(2rem, 3.5vw, 3.5rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+
+  .chapter-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  /* ── PROSE ── */
+  .prose p {
+    margin-bottom: 1.5rem;
+    color: var(--ink2);
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .prose .lead {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.65;
+    margin-bottom: 2rem;
+  }
+
+  /* ── PULLQUOTE ── */
+  .pullquote {
+    margin: 3rem 0;
+    padding: 2.5rem 3rem;
+    border-left: 3px solid var(--accent);
+    background: var(--paper2);
+  }
+
+  .pullquote p {
+    font-family: var(--ff-head);
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .pullquote cite {
+    display: block;
+    margin-top: 1rem;
+    font-style: normal;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    color: var(--ink3);
+    font-family: var(--ff-mono);
+    text-transform: uppercase;
+  }
+
+  /* ── STAT CARDS ── */
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--line);
+    margin: 3rem 0;
+    border: 1px solid var(--line);
+  }
+
+  .stat-card {
+    background: var(--paper);
+    padding: 2rem;
+  }
+
+  .stat-card .big-num {
+    font-family: var(--ff-head);
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .stat-card .stat-label {
+    font-size: 14px;
+    color: var(--ink3);
+    line-height: 1.4;
+  }
+
+  .stat-card .stat-source {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    color: var(--ink3);
+    opacity: 0.6;
+    margin-top: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* ── VISUAL ILLUSTRATIONS ── */
+  .illustration-block {
+    margin: 3.5rem 0;
+    background: var(--paper2);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .illustration-block figcaption {
+    padding: 1rem 1.5rem;
+    font-size: 12px;
+    color: var(--ink3);
+    border-top: 1px solid var(--line);
+    font-family: var(--ff-mono);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── INDUSTRY / DEPT CARDS ── */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .cards-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .industry-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    padding: 1.75rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .industry-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .card-health::before { background: #1a6b4a; }
+  .card-finance::before { background: #1d4b8a; }
+  .card-manufacturing::before { background: #7c3b8a; }
+  .card-logistics::before { background: #c84b2f; }
+  .card-media::before { background: #b87b2a; }
+  .card-legal::before { background: #2a6b6b; }
+
+  .industry-card .ic-icon {
+    font-size: 28px;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .industry-card h3 {
+    font-family: var(--ff-head);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--ink);
+  }
+
+  .industry-card p {
+    font-size: 14px;
+    color: var(--ink3);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .industry-card .real-app {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 13px;
+    color: var(--ink2);
+  }
+
+  .industry-card .real-app strong {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .industry-card .impact-chip {
+    display: inline-block;
+    margin-top: 0.75rem;
+    padding: 0.3rem 0.8rem;
+    font-size: 12px;
+    font-family: var(--ff-mono);
+    background: var(--paper2);
+    border: 1px solid var(--line);
+    color: var(--ink3);
+  }
+
+  /* ── PROCESS TIMELINE ── */
+  .timeline {
+    margin: 3rem 0;
+    position: relative;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 32px;
+    top: 0; bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+
+  .tl-item {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+  }
+
+  .tl-dot {
+    flex-shrink: 0;
+    width: 64px;
+    height: 64px;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ff-head);
+    font-size: 1.3rem;
+    font-weight: 700;
+    position: relative;
+    z-index: 2;
+  }
+
+  .tl-content {
+    flex: 1;
+    padding-top: 0.75rem;
+  }
+
+  .tl-content h4 {
+    font-family: var(--ff-head);
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--ink);
+  }
+
+  .tl-content p {
+    font-size: 15px;
+    color: var(--ink3);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  .tl-era {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+
+  /* ── DEPT ROWS ── */
+  .dept-block {
+    margin: 2.5rem 0;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .dept-block-header {
+    padding: 1.25rem 1.75rem;
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .dept-block-header h3 {
+    font-family: var(--ff-head);
+    font-size: 1.1rem;
+    font-weight: 700;
+  }
+
+  .dept-block-header .dept-tag {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .dept-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    divide-x: 1px solid var(--line);
+  }
+
+  .dept-col {
+    padding: 1.5rem 1.75rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .dept-col:last-child { border-right: none; }
+
+  .dept-col-title {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 0.75rem;
+  }
+
+  .dept-col ul {
+    list-style: none;
+    font-size: 14px;
+    color: var(--ink2);
+  }
+
+  .dept-col ul li {
+    padding: 0.3rem 0;
+    border-bottom: 0.5px solid var(--line);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .dept-col ul li::before {
+    content: '→';
+    color: var(--accent);
+    font-size: 12px;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .dept-col ul li:last-child { border-bottom: none; }
+
+  /* ── RETAIL STAGES ── */
+  .retail-stage {
+    margin-bottom: 3rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    overflow: hidden;
+  }
+
+  .rs-header {
+    padding: 1.5rem 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    background: var(--paper2);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .rs-num {
+    width: 48px;
+    height: 48px;
+    background: var(--accent);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--ff-head);
+    font-size: 1.3rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .rs-title h3 {
+    font-family: var(--ff-head);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .rs-title p {
+    font-size: 13px;
+    color: var(--ink3);
+    margin: 0;
+    font-family: var(--ff-mono);
+    letter-spacing: 0.05em;
+  }
+
+  .rs-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+
+  .rs-col {
+    padding: 1.75rem 2rem;
+    border-right: 1px solid var(--line);
+  }
+
+  .rs-col:last-child { border-right: none; }
+
+  .rs-col h4 {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 1rem;
+  }
+
+  .rs-col p {
+    font-size: 15px;
+    color: var(--ink2);
+    line-height: 1.65;
+  }
+
+  .example-tag {
+    display: inline-block;
+    padding: 0.2rem 0.7rem;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+
+  /* ── PERSONAL AI GUIDE ── */
+  .skill-pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin: 2.5rem 0;
+  }
+
+  .skill-pillar {
+    padding: 2rem;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    position: relative;
+  }
+
+  .skill-pillar .sp-num {
+    font-family: var(--ff-head);
+    font-size: 5rem;
+    font-weight: 900;
+    color: var(--paper2);
+    position: absolute;
+    top: -0.5rem;
+    right: 1rem;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .skill-pillar h3 {
+    font-family: var(--ff-head);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 0.75rem;
+    position: relative;
+  }
+
+  .skill-pillar p {
+    font-size: 14px;
+    color: var(--ink3);
+    line-height: 1.65;
+    margin: 0;
+    position: relative;
+  }
+
+  .skill-pillar ul {
+    list-style: none;
+    margin-top: 0.75rem;
+    position: relative;
+  }
+
+  .skill-pillar ul li {
+    font-size: 13px;
+    color: var(--ink2);
+    padding: 0.3rem 0;
+    padding-left: 1rem;
+    position: relative;
+  }
+
+  .skill-pillar ul li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 18px;
+    line-height: 1.3;
+  }
+
+  /* ── PERFORMANCE TABLE ── */
+  .perf-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 14px;
+  }
+
+  .perf-table th {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .perf-table td {
+    padding: 0.85rem 1rem;
+    border-bottom: 0.5px solid var(--line);
+    color: var(--ink2);
+    vertical-align: top;
+  }
+
+  .perf-table tr:hover td { background: var(--paper2); }
+
+  .perf-table .metric {
+    font-weight: 500;
+    color: var(--ink);
+  }
+
+  .perf-table .gain {
+    color: var(--accent2);
+    font-family: var(--ff-mono);
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ── SVG INFOGRAPHICS ── */
+  .svg-wrapper {
+    margin: 3rem 0;
+    border: 1px solid var(--line);
+    overflow: hidden;
+    background: var(--paper);
+  }
+
+  .svg-caption {
+    padding: 0.75rem 1.5rem;
+    font-size: 12px;
+    color: var(--ink3);
+    border-top: 1px solid var(--line);
+    font-family: var(--ff-mono);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── CLOSING CTA ── */
+  .closing-block {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 5rem 4rem;
+    margin-top: 5rem;
+    text-align: center;
+  }
+
+  .closing-block h2 {
+    font-family: var(--ff-head);
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.1;
+  }
+
+  .closing-block p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.6);
+    max-width: 600px;
+    margin: 0 auto 2.5rem;
+    line-height: 1.65;
+  }
+
+  .action-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: rgba(255,255,255,0.1);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .action-card {
+    background: rgba(255,255,255,0.04);
+    padding: 2rem;
+    text-align: left;
+  }
+
+  .action-card h4 {
+    font-family: var(--ff-head);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--paper);
+  }
+
+  .action-card p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 3rem 0;
+    opacity: 0.3;
+  }
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--ink);
+  }
+  .divider span {
+    font-family: var(--ff-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  /* ── AI ANATOMY VISUAL ── */
+  .anatomy-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    border: 1px solid var(--line);
+    margin: 2.5rem 0;
+    overflow: hidden;
+  }
+
+  .anatomy-left {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .anatomy-left h3 {
+    font-family: var(--ff-head);
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .anatomy-left p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    line-height: 1.6;
+  }
+
+  .anatomy-right {
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+  }
+
+  .anatomy-item {
+    background: var(--paper);
+    padding: 1.25rem;
+  }
+
+  .anatomy-item .ai-label {
+    font-family: var(--ff-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink3);
+    margin-bottom: 0.4rem;
+  }
+
+  .anatomy-item h4 {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 0.4rem;
+  }
+
+  .anatomy-item p {
+    font-size: 13px;
+    color: var(--ink3);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── PAGE BREAK VISUALS ── */
+  .chapter-hero {
+    height: 180px;
+    display: flex;
+    align-items: flex-end;
+    padding: 2rem;
+    margin-bottom: 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .chapter-hero svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* scrollspy reading progress */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--accent);
+    z-index: 9999;
+    transition: width 0.1s linear;
+    width: 0%;
+  }
+</style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- ═══════════════════════════════════════ HERO ═══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg-art">
+    <svg viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;opacity:0.06">
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="0.5"/>
+        </pattern>
+      </defs>
+      <rect width="1400" height="900" fill="url(#grid)"/>
+      <circle cx="900" cy="200" r="350" fill="none" stroke="white" stroke-width="0.5"/>
+      <circle cx="900" cy="200" r="250" fill="none" stroke="white" stroke-width="0.5"/>
+      <circle cx="900" cy="200" r="150" fill="none" stroke="white" stroke-width="0.5"/>
+      <line x1="900" y1="-150" x2="900" y2="550" stroke="white" stroke-width="0.5"/>
+      <line x1="500" y1="200" x2="1300" y2="200" stroke="white" stroke-width="0.5"/>
+      <line x1="652" y1="-52" x2="1148" y2="452" stroke="white" stroke-width="0.5"/>
+      <line x1="1148" y1="-52" x2="652" y2="452" stroke="white" stroke-width="0.5"/>
+    </svg>
+  </div>
+  <nav class="hero-nav">
+    <span class="brand">In-Depth Analysis · 2025–26</span>
+    <span class="meta">Comprehensive Research Report</span>
+  </nav>
+  <div class="hero-body">
+    <div class="hero-eyebrow">The Intelligence Revolution</div>
+    <h1 class="hero-title">AI in Business:<br><em>The Complete</em><br>Field Guide</h1>
+    <p class="hero-subtitle">From foundational concepts to real-world deployment — how artificial intelligence is reshaping every industry, department, and the retail journey from warehouse to checkout.</p>
+  </div>
+  <div class="hero-stats-row">
+    <div class="hero-stat">
+      <div class="num">78<span>%</span></div>
+      <div class="label">of organizations now use AI in at least one business function</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">$3.70</div>
+      <div class="label">average return for every $1 invested in generative AI</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">40<span>%</span></div>
+      <div class="label">average productivity boost reported by employees using AI tools</div>
+    </div>
+    <div class="hero-stat">
+      <div class="num">$1.5<span>T</span></div>
+      <div class="label">worldwide AI spending projected for 2025 (Gartner)</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ TOC ═══════════════════════════════════════ -->
+<div class="container">
+  <div class="toc-block" style="margin-top:4rem;">
+    <div class="toc-title">Contents</div>
+    <div class="toc-grid">
+      <div class="toc-item" onclick="scrollTo('ch1')"><span class="toc-num">01</span><span class="toc-text">What is AI — Zero to One</span></div>
+      <div class="toc-item" onclick="scrollTo('ch2')"><span class="toc-num">02</span><span class="toc-text">AI Across Industries</span></div>
+      <div class="toc-item" onclick="scrollTo('ch3')"><span class="toc-num">03</span><span class="toc-text">AI in Every Department</span></div>
+      <div class="toc-item" onclick="scrollTo('ch4')"><span class="toc-num">04</span><span class="toc-text">AI in Retail — Deep Dive</span></div>
+      <div class="toc-item" onclick="scrollTo('ch5')"><span class="toc-num">05</span><span class="toc-text">Performance Impact</span></div>
+      <div class="toc-item" onclick="scrollTo('ch6')"><span class="toc-num">06</span><span class="toc-text">How to Master AI Personally</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CH 1: WHAT IS AI ═══════════════════════════════════════ -->
+<div class="container">
+  <div class="article-body">
+
+    <div class="chapter" id="ch1">
+      <div class="chapter-header">
+        <div class="chapter-num">Chapter 01</div>
+        <h2 class="chapter-title">What is AI — <em>Zero to One</em></h2>
+      </div>
+
+      <div class="prose">
+        <p class="lead">Artificial Intelligence is not a single technology. It is an umbrella of techniques that enable machines to perceive, reason, learn, and act — capabilities once exclusive to human minds.</p>
+        <p>The journey from zero to one begins with a fundamental question: how do we get a machine to make good decisions without explicitly programming every rule? The answer, developed over decades, is to give it data and let it learn patterns on its own. This learning paradigm — called <strong>machine learning</strong> — is the engine beneath nearly every AI application you encounter today.</p>
+      </div>
+
+      <!-- AI Anatomy Block -->
+      <div class="anatomy-grid">
+        <div class="anatomy-left">
+          <h3>The AI Stack</h3>
+          <p>Every AI system sits on three foundational layers: data (the raw material), algorithms (the learning method), and compute (the processing power). Understanding each layer is the first step to using AI strategically.</p>
+        </div>
+        <div class="anatomy-right">
+          <div class="anatomy-item">
+            <div class="ai-label">Layer 1</div>
+            <h4>Artificial Intelligence (AI)</h4>
+            <p>Machines performing tasks that require human-like intelligence: reasoning, perception, language, problem-solving.</p>
+          </div>
+          <div class="anatomy-item">
+            <div class="ai-label">Layer 2</div>
+            <h4>Machine Learning (ML)</h4>
+            <p>Systems that learn from data without being explicitly programmed. They improve automatically with experience.</p>
+          </div>
+          <div class="anatomy-item">
+            <div class="ai-label">Layer 3</div>
+            <h4>Deep Learning (DL)</h4>
+            <p>Neural networks with many layers that can learn complex patterns — the engine behind image and speech recognition.</p>
+          </div>
+          <div class="anatomy-item">
+            <div class="ai-label">Layer 4</div>
+            <h4>Generative AI (GenAI)</h4>
+            <p>Models that create new content — text, images, code, audio — by learning the statistical patterns in vast datasets.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline of AI evolution -->
+      <h3 style="font-family:var(--ff-head); font-size:1.6rem; font-weight:700; margin:3rem 0 2rem; color:var(--ink);">A Brief History of Intelligence</h3>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot">1</div>
+          <div class="tl-content">
+            <div class="tl-era">1950s – 1980s</div>
+            <h4>Rule-Based Systems</h4>
+            <p>Early AI relied on hand-crafted rules: "IF this condition THEN this action." These expert systems excelled in narrow, well-defined domains but broke down at scale. Chess engines and early medical diagnostics were flagship examples.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">2</div>
+          <div class="tl-content">
+            <div class="tl-era">1990s – 2010s</div>
+            <h4>Statistical Machine Learning</h4>
+            <p>Instead of programming rules, engineers began feeding algorithms data and letting them discover patterns. Decision trees, random forests, and support vector machines powered everything from email spam filters to credit scoring models.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">3</div>
+          <div class="tl-content">
+            <div class="tl-era">2012 – 2020</div>
+            <h4>Deep Learning Revolution</h4>
+            <p>Breakthroughs in neural network architecture — combined with GPU computing and massive datasets — unlocked superhuman performance in image recognition, speech, and language translation. AlexNet, AlphaGo, BERT.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">4</div>
+          <div class="tl-content">
+            <div class="tl-era">2022 – Present</div>
+            <h4>The Generative AI Era</h4>
+            <p>Large language models and multimodal AI systems democratized intelligence. For the first time, a non-technical person could collaborate with a machine using plain language. ChatGPT crossed 100 million users in 60 days — the fastest product adoption in history.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot">5</div>
+          <div class="tl-content">
+            <div class="tl-era">2025 – Next Frontier</div>
+            <h4>Agentic AI</h4>
+            <p>AI systems that don't just answer questions — they take multi-step actions autonomously: browsing the web, writing code, calling APIs, and completing complex workflows with minimal human intervention. The shift from assistant to agent.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Key AI concepts -->
+      <div class="pullquote">
+        <p>"AI is not a monolith — it is a set of techniques. The right question is not 'should we use AI?' but 'which type of AI solves this specific problem?'"</p>
+        <cite>Foundational Principle of AI Strategy</cite>
+      </div>
+
+      <div class="prose">
+        <p>The three most important AI concepts for any business professional to internalize are:</p>
+        <p><strong>Training vs. Inference.</strong> AI models are trained on historical data to learn patterns, then deployed to make predictions on new data (inference). The quality of your data determines the quality of your outcomes — garbage in, garbage out.</p>
+        <p><strong>Supervised, Unsupervised, and Reinforcement Learning.</strong> Supervised learning uses labeled examples to learn ("this email is spam / not spam"). Unsupervised learning finds hidden structure in unlabeled data. Reinforcement learning trains agents through trial-and-error reward signals — the method behind AlphaGo and robotic control.</p>
+        <p><strong>The Hallucination Problem.</strong> Generative AI systems can produce confident-sounding but factually incorrect outputs. This is the central implementation challenge: 77% of businesses cite AI hallucinations as a top concern. The solution is human oversight, retrieval-augmented generation (RAG), and grounding models with verified data sources.</p>
+      </div>
+
+      <!-- AI Types visual -->
+      <div class="svg-wrapper">
+        <svg viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;">
+          <defs>
+            <marker id="arr1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#c84b2f" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+          <!-- Background circles -->
+          <ellipse cx="340" cy="130" rx="300" ry="110" fill="#f2f0eb" stroke="#0f0e0c" stroke-width="0.5"/>
+          <ellipse cx="340" cy="130" rx="220" ry="82" fill="#e8e4dc" stroke="#0f0e0c" stroke-width="0.5"/>
+          <ellipse cx="340" cy="130" rx="140" ry="54" fill="#d8d3c8" stroke="#0f0e0c" stroke-width="0.5"/>
+          <ellipse cx="340" cy="130" rx="60" ry="28" fill="#0f0e0c" stroke="none"/>
+          <!-- Labels -->
+          <text x="340" y="135" text-anchor="middle" fill="white" font-family="'DM Sans', sans-serif" font-size="11" font-weight="500">Agentic AI</text>
+          <text x="340" y="86" text-anchor="middle" fill="#0f0e0c" font-family="'DM Sans', sans-serif" font-size="12" font-weight="500">Generative AI</text>
+          <text x="340" y="62" text-anchor="middle" fill="#5a5750" font-family="'DM Sans', sans-serif" font-size="11">GPT, Claude, Gemini, Stable Diffusion</text>
+          <text x="340" y="46" text-anchor="middle" fill="#0f0e0c" font-family="'DM Sans', sans-serif" font-size="12" font-weight="500">Deep Learning</text>
+          <text x="340" y="32" text-anchor="middle" fill="#5a5750" font-family="'DM Sans', sans-serif" font-size="11">Neural networks, CNNs, Transformers</text>
+          <text x="340" y="18" text-anchor="middle" fill="#0f0e0c" font-family="'DM Sans', sans-serif" font-size="12" font-weight="500">Machine Learning</text>
+          <text x="340" y="6" text-anchor="middle" fill="#5a5750" font-family="'DM Sans', sans-serif" font-size="11">Supervised, Unsupervised, Reinforcement</text>
+          <!-- Outer label -->
+          <text x="42" y="134" text-anchor="middle" fill="#0f0e0c" font-family="'DM Sans', sans-serif" font-size="11" font-weight="500">AI</text>
+          <text x="42" y="148" text-anchor="middle" fill="#5a5750" font-family="'DM Sans', sans-serif" font-size="10">All intelligent</text>
+          <text x="42" y="160" text-anchor="middle" fill="#5a5750" font-family="'DM Sans', sans-serif" font-size="10">systems</text>
+          <!-- Right side labels -->
+          <text x="610" y="115" text-anchor="start" fill="#0f0e0c" font-family="'DM Sans', sans-serif" font-size="11" font-weight="500">Narrowest</text>
+          <text x="610" y="128" text-anchor="start" fill="#5a5750" font-family="'DM Sans', sans-serif" font-size="10">Most capable</text>
+          <text x="610" y="145" text-anchor="start" fill="#0f0e0c" font-family="'DM Sans', sans-serif" font-size="11" font-weight="500">Broadest</text>
+          <text x="610" y="158" text-anchor="start" fill="#5a5750" font-family="'DM Sans', sans-serif" font-size="10">Most general</text>
+          <line x1="600" y1="117" x2="575" y2="117" stroke="#c84b2f" stroke-width="0.75" marker-end="url(#arr1)"/>
+          <line x1="600" y1="148" x2="575" y2="148" stroke="#0f0e0c" stroke-width="0.75" marker-end="url(#arr1)"/>
+        </svg>
+        <div class="svg-caption">Fig 1.1 — The nested relationship between AI disciplines. Each inner circle is a specialized subset of the outer one.</div>
+      </div>
+
+    </div>
+
+<!-- ═══════════════════════════════════════ CH 2: INDUSTRIES ═══════════════════════════════════════ -->
+
+    <div class="chapter" id="ch2">
+      <div class="chapter-header">
+        <div class="chapter-num">Chapter 02</div>
+        <h2 class="chapter-title">AI Across <em>Industries</em></h2>
+      </div>
+
+      <div class="prose">
+        <p class="lead">No sector is untouched. In every major industry, AI is not merely automating existing tasks — it is enabling entirely new categories of value creation that were previously impossible.</p>
+        <p>The pattern of disruption is consistent: AI first appears as a productivity tool (doing existing work faster and cheaper), then evolves into a transformation tool (redesigning how work is done), and finally enables entirely new business models. Most organizations today are in the first stage — and the gap between leaders and laggards is widening rapidly.</p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="big-num">34%</div>
+          <div class="stat-label">of organizations are using AI to deeply transform — creating new products or reinventing core processes</div>
+          <div class="stat-source">Deloitte State of AI 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="big-num">11×</div>
+          <div class="stat-label">growth in AI adoption in the technology sector over 12 months — the fastest-scaling industry</div>
+          <div class="stat-source">OpenAI Enterprise Report 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="big-num">$400B</div>
+          <div class="stat-label">potential annual value generative AI could deliver to retail through improved service, marketing, and supply chain</div>
+          <div class="stat-source">McKinsey Global Institute</div>
+        </div>
+      </div>
+
+      <div class="cards-grid">
+        <!-- Healthcare -->
+        <div class="industry-card card-health">
+          <span class="ic-icon">🏥</span>
+          <h3>Healthcare & Life Sciences</h3>
+          <p>AI is compressing drug discovery timelines from 12 years to 3–5 years, detecting diseases from medical imaging with radiologist-level accuracy, and enabling personalized treatment protocols at scale.</p>
+          <div class="real-app">
+            <strong>Real Application</strong>
+            Google DeepMind's AlphaFold predicted the 3D structure of virtually every known protein — solving a 50-year scientific challenge. In clinical settings, AI systems now detect early-stage lung cancer from CT scans with 94% accuracy, outperforming human radiologists in speed and sensitivity.
+          </div>
+          <span class="impact-chip">+40% diagnostic accuracy</span>
+        </div>
+
+        <!-- Finance -->
+        <div class="industry-card card-finance">
+          <span class="ic-icon">🏦</span>
+          <h3>Banking & Financial Services</h3>
+          <p>From real-time fraud detection across millions of transactions to AI-driven credit risk models and autonomous wealth management, finance is one of the most AI-dense sectors globally.</p>
+          <div class="real-app">
+            <strong>Real Application</strong>
+            JPMorgan Chase's COIN (Contract Intelligence) system reviews 12,000 commercial credit agreements annually — work that previously took 360,000 hours of lawyer time — in seconds. Visa's AI fraud detection blocks $40 billion in fraudulent transactions annually with 99.99% uptime.
+          </div>
+          <span class="impact-chip">360K hours saved annually</span>
+        </div>
+
+        <!-- Manufacturing -->
+        <div class="industry-card card-manufacturing">
+          <span class="ic-icon">🏭</span>
+          <h3>Manufacturing & Industry</h3>
+          <p>Predictive maintenance, quality control via computer vision, and AI-optimized production scheduling are reducing downtime, defects, and waste across global factory floors.</p>
+          <div class="real-app">
+            <strong>Real Application</strong>
+            Siemens uses AI-powered digital twins — virtual replicas of physical factories — that run simulations in real time to optimize production flow before any physical change is made. BMW's production AI detects paint defects invisible to the human eye, cutting warranty claims by 30%.
+          </div>
+          <span class="impact-chip">30% fewer defects</span>
+        </div>
+
+        <!-- Logistics -->
+        <div class="industry-card card-logistics">
+          <span class="ic-icon">🚚</span>
+          <h3>Logistics & Supply Chain</h3>
+          <p>AI is rewriting the rules of movement — from autonomous warehouses to route optimization algorithms that dynamically adjust in real time to traffic, weather, and demand signals.</p>
+          <div class="real-app">
+            <strong>Real Application</strong>
+            UPS's ORION (On-Road Integrated Optimization and Navigation) system analyzes 250 million address points to optimize 55,000 routes daily — saving 100 million miles and $400 million annually. Amazon's robotics network uses 750,000+ robots that work alongside humans in fulfillment centers.
+          </div>
+          <span class="impact-chip">100M miles saved/year</span>
+        </div>
+
+        <!-- Media -->
+        <div class="industry-card card-media">
+          <span class="ic-icon">🎬</span>
+          <h3>Media, Entertainment & Tech</h3>
+          <p>Recommendation engines, AI-generated content, personalized ad targeting, and real-time content moderation have fundamentally changed how content is created, distributed, and consumed.</p>
+          <div class="real-app">
+            <strong>Real Application</strong>
+            Netflix credits its recommendation algorithm with saving $1 billion annually by reducing churn. Spotify's Discover Weekly, generated by ML models analyzing 400 million users' listening patterns, has 2.3 billion streams per month. Adobe Firefly generated over 13 billion images in its first year.
+          </div>
+          <span class="impact-chip">$1B churn savings (Netflix)</span>
+        </div>
+
+        <!-- Legal -->
+        <div class="industry-card card-legal">
+          <span class="ic-icon">⚖️</span>
+          <h3>Legal & Professional Services</h3>
+          <p>Contract analysis, legal research, due diligence, and compliance monitoring — tasks that consumed thousands of billable hours — are being compressed from weeks to minutes by AI document intelligence.</p>
+          <div class="real-app">
+            <strong>Real Application</strong>
+            Harvey AI (built on GPT-4) is used by Allen & Overy to research case law, draft contracts, and analyze precedents. The AI completes in 4 minutes what associates take 4 hours to do. Luminance's AI reviewed 1.1 million contracts for a single client merger in under 48 hours.
+          </div>
+          <span class="impact-chip">60× faster document review</span>
+        </div>
+      </div>
+
+    </div>
+
+<!-- ═══════════════════════════════════════ CH 3: DEPARTMENTS ═══════════════════════════════════════ -->
+
+    <div class="chapter" id="ch3">
+      <div class="chapter-header">
+        <div class="chapter-num">Chapter 03</div>
+        <h2 class="chapter-title">AI in Every <em>Department</em></h2>
+      </div>
+
+      <div class="prose">
+        <p class="lead">While industry-level disruption gets the headlines, the day-to-day transformation happens at the departmental level — in the specific tools, workflows, and decisions that define how work gets done.</p>
+        <p>Every major business function is experiencing simultaneous AI-driven change. The most important insight: AI doesn't just automate tasks — it changes which tasks are worth doing at all. Marketing teams no longer write one email for all; they generate thousands of personalized variants. Finance teams don't just close the books faster; they run hundreds of scenario models in real time.</p>
+      </div>
+
+      <!-- Marketing -->
+      <div class="dept-block">
+        <div class="dept-block-header">
+          <h3>Marketing & Sales</h3>
+          <span class="dept-tag">Highest AI adoption · 42% of all businesses</span>
+        </div>
+        <div class="dept-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+          <div class="dept-col">
+            <div class="dept-col-title">AI Applications</div>
+            <ul>
+              <li>Personalized content generation at scale</li>
+              <li>Predictive lead scoring and prioritization</li>
+              <li>Dynamic pricing optimization</li>
+              <li>Customer sentiment analysis</li>
+              <li>Automated A/B testing</li>
+              <li>Campaign ROI attribution modeling</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Real Tools Used</div>
+            <ul>
+              <li>Salesforce Einstein for CRM intelligence</li>
+              <li>HubSpot AI for email personalization</li>
+              <li>Jasper / Copy.ai for content creation</li>
+              <li>6sense for intent-based targeting</li>
+              <li>Persado for AI-generated messaging</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Measured Impact</div>
+            <ul>
+              <li>37% higher marketing engagement</li>
+              <li>29% lower customer acquisition cost</li>
+              <li>3–5× higher email campaign ROI</li>
+              <li>20–25% better marketing ROI</li>
+              <li>102% CTR uplift (Rappi case study)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- HR -->
+      <div class="dept-block">
+        <div class="dept-block-header">
+          <h3>Human Resources & Talent</h3>
+          <span class="dept-tag">AI literacy now #1 hiring priority</span>
+        </div>
+        <div class="dept-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+          <div class="dept-col">
+            <div class="dept-col-title">AI Applications</div>
+            <ul>
+              <li>Resume screening and candidate ranking</li>
+              <li>Predictive attrition modeling</li>
+              <li>AI-powered interview analysis</li>
+              <li>Personalized L&D recommendations</li>
+              <li>Benefits optimization engines</li>
+              <li>Workforce planning simulations</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Real Tools Used</div>
+            <ul>
+              <li>Workday AI for workforce analytics</li>
+              <li>HireVue for video interview scoring</li>
+              <li>Eightfold AI for talent intelligence</li>
+              <li>Gloat for internal mobility</li>
+              <li>Glean for enterprise knowledge search</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Measured Impact</div>
+            <ul>
+              <li>75% reduction in time-to-screen</li>
+              <li>30% improvement in quality of hire</li>
+              <li>40% reduction in voluntary attrition</li>
+              <li>AI literacy = top strategic priority</li>
+              <li>28% of staff use AI (Salesforce)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Finance -->
+      <div class="dept-block">
+        <div class="dept-block-header">
+          <h3>Finance & Accounting</h3>
+          <span class="dept-tag">82% of finance teams optimistic about AI's impact</span>
+        </div>
+        <div class="dept-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+          <div class="dept-col">
+            <div class="dept-col-title">AI Applications</div>
+            <ul>
+              <li>Automated financial reporting</li>
+              <li>Real-time cash flow forecasting</li>
+              <li>Anomaly detection & fraud prevention</li>
+              <li>Accounts payable/receivable automation</li>
+              <li>Scenario planning & stress testing</li>
+              <li>ESG data analytics</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Real Tools Used</div>
+            <ul>
+              <li>Oracle Fusion Cloud with AI</li>
+              <li>SAP FI + AI copilot modules</li>
+              <li>Cohere for financial document analysis</li>
+              <li>Datarails for FP&A automation</li>
+              <li>Mosaic for strategic finance</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Measured Impact</div>
+            <ul>
+              <li>76% automated financial reporting</li>
+              <li>50–70% reduction in month-close time</li>
+              <li>$40B fraud blocked annually (Visa)</li>
+              <li>30% faster budget cycles</li>
+              <li>99.9% accuracy in invoice processing</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Operations -->
+      <div class="dept-block">
+        <div class="dept-block-header">
+          <h3>Operations & Supply Chain</h3>
+          <span class="dept-tag">50% of supply chain teams report cost reductions from AI</span>
+        </div>
+        <div class="dept-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+          <div class="dept-col">
+            <div class="dept-col-title">AI Applications</div>
+            <ul>
+              <li>Demand forecasting</li>
+              <li>Predictive maintenance scheduling</li>
+              <li>Supplier risk monitoring</li>
+              <li>Inventory optimization</li>
+              <li>Route and logistics planning</li>
+              <li>Quality control automation</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Real Tools Used</div>
+            <ul>
+              <li>o9 Solutions for supply chain AI</li>
+              <li>Blue Yonder for demand planning</li>
+              <li>C3.ai for predictive maintenance</li>
+              <li>Coupa for procurement intelligence</li>
+              <li>Uptake for asset intelligence</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Measured Impact</div>
+            <ul>
+              <li>15–20% reduction in inventory costs</li>
+              <li>35% decrease in machine downtime</li>
+              <li>25% faster supplier onboarding</li>
+              <li>10–30% logistics cost savings</li>
+              <li>30M miles saved (Walmart/UPS)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customer Service -->
+      <div class="dept-block">
+        <div class="dept-block-header">
+          <h3>Customer Service & Support</h3>
+          <span class="dept-tag">2,000%+ growth in AI adoption since January 2025</span>
+        </div>
+        <div class="dept-body" style="display:grid;grid-template-columns:1fr 1fr 1fr;">
+          <div class="dept-col">
+            <div class="dept-col-title">AI Applications</div>
+            <ul>
+              <li>24/7 conversational AI agents</li>
+              <li>Intelligent ticket routing & triage</li>
+              <li>Agent assist (real-time suggestions)</li>
+              <li>Sentiment analysis for escalation</li>
+              <li>Self-service knowledge bases</li>
+              <li>Proactive issue resolution</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Real Tools Used</div>
+            <ul>
+              <li>Intercom Fin AI for chat support</li>
+              <li>Zendesk AI for ticket automation</li>
+              <li>Freshdesk Freddy AI</li>
+              <li>Salesforce Einstein for case mgmt</li>
+              <li>Kore.ai for enterprise virtual agents</li>
+            </ul>
+          </div>
+          <div class="dept-col">
+            <div class="dept-col-title">Measured Impact</div>
+            <ul>
+              <li>50–80% of tier-1 queries resolved by AI</li>
+              <li>40% reduction in handle time</li>
+              <li>35% improvement in CSAT scores</li>
+              <li>60% lower cost-per-resolution</li>
+              <li>Available in 50+ languages instantly</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+<!-- ═══════════════════════════════════════ CH 4: RETAIL ═══════════════════════════════════════ -->
+
+    <div class="chapter" id="ch4">
+      <div class="chapter-header">
+        <div class="chapter-num">Chapter 04</div>
+        <h2 class="chapter-title">AI in Retail — <em>Every Stage</em></h2>
+      </div>
+
+      <div class="prose">
+        <p class="lead">Retail is where AI becomes most tangible to the average person — influencing what they see, what they're offered, what they pay, and how fast their purchases arrive. The transformation spans the entire value chain.</p>
+        <p>The global AI-in-retail market was valued at $11.61 billion in 2024 and is projected to reach $40.74 billion by 2030 — a 23% annual growth rate. Amazon pioneered almost every technique now considered standard, while Walmart has executed the most impressive traditional-to-AI transformation story in retail history.</p>
+      </div>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="big-num">87%</div>
+          <div class="stat-label">of retailers report that AI has had a positive impact on revenue</div>
+          <div class="stat-source">Shopify Enterprise 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="big-num">94%</div>
+          <div class="stat-label">of retailers say AI has reduced operating costs</div>
+          <div class="stat-source">Shopify Enterprise 2025</div>
+        </div>
+        <div class="stat-card">
+          <div class="big-num">288%</div>
+          <div class="stat-label">increase in conversion rates from AI-driven personalized recommendations</div>
+          <div class="stat-source">E-commerce AI Benchmark 2025</div>
+        </div>
+      </div>
+
+      <!-- Stage 1: Discovery -->
+      <div class="retail-stage">
+        <div class="rs-header">
+          <div class="rs-num">1</div>
+          <div class="rs-title">
+            <h3>Discovery & Awareness</h3>
+            <p>How customers find products — and how retailers find customers</p>
+          </div>
+        </div>
+        <div class="rs-body">
+          <div class="rs-col">
+            <h4>What AI Does</h4>
+            <p>AI transforms product discovery from keyword matching to genuine intent understanding. Natural language search engines now interpret slang, typos, and complex queries — "what's a good birthday gift for a science-mad 12-year-old?" — and return accurate, personalized results.</p>
+            <p style="margin-top:1rem;">AI models build individual taste profiles from browsing behavior, purchase history, and contextual signals (weather, time of day, location) to surface products each customer is most likely to love — even products they'd never have searched for.</p>
+          </div>
+          <div class="rs-col">
+            <h4>Real Examples</h4>
+            <div class="example-tag">Amazon</div>
+            <p>Amazon's collaborative filtering and neural network-powered recommendation engine drives 35% of all revenues. The "Customers who bought this also bought" algorithm processes billions of user signals in real time.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">Myntra (India)</div>
+            <p>Myntra's Style Suggestions engine uses computer vision, ML, and behavior mapping to recommend complete outfit looks — not just individual items. Impact: measurable improvement in repeat purchase rates.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">Zalando</div>
+            <p>Zalando built an AI assistant that understands fashion-specific queries, handling seasonal nuance, style preferences, and occasion-specific needs — resulting in higher conversion and fewer abandoned carts.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2: Personalization -->
+      <div class="retail-stage">
+        <div class="rs-header">
+          <div class="rs-num">2</div>
+          <div class="rs-title">
+            <h3>Personalization & Experience</h3>
+            <p>Moving from one-size-fits-all to one-to-one commerce</p>
+          </div>
+        </div>
+        <div class="rs-body">
+          <div class="rs-col">
+            <h4>What AI Does</h4>
+            <p>True personalization means every customer sees a different version of the store — different homepage, different offers, different email content, different app experience. AI makes this economically viable by generating personalized content at machine speed.</p>
+            <p style="margin-top:1rem;">Research shows 81% of consumers are more likely to buy from a brand that "gets" them. Companies that deliver personalization at scale achieve 5–15% higher revenue growth compared to peers.</p>
+          </div>
+          <div class="rs-col">
+            <h4>Real Examples</h4>
+            <div class="example-tag">Sephora</div>
+            <p>Sephora's Virtual Artist and Smart Skin Scan use deep learning trained on 70,000+ medical-grade images to analyze skin conditions and recommend precise products. The system achieves 95% test-retest reliability across all skin types.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">Stitch Fix</div>
+            <p>Stitch Fix combines ML models with human stylists — AI analyzes 85+ personal data points, while stylists add contextual judgment. This hybrid model achieves a 30% return rate vs. the industry's 40%+ average.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">H&M</div>
+            <p>H&M's AI analyzes sales data by store, climate zone, and local fashion trends to generate unique product assortments per location — turning what was a global catalog into thousands of local ones.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3: Pricing -->
+      <div class="retail-stage">
+        <div class="rs-header">
+          <div class="rs-num">3</div>
+          <div class="rs-title">
+            <h3>Pricing & Promotions</h3>
+            <p>Dynamic, real-time price optimization across millions of SKUs</p>
+          </div>
+        </div>
+        <div class="rs-body">
+          <div class="rs-col">
+            <h4>What AI Does</h4>
+            <p>AI dynamic pricing algorithms adjust prices in real time based on competitive pricing, inventory levels, demand forecasting, weather patterns, time of day, and customer segment — simultaneously across millions of SKUs. This was physically impossible with manual pricing teams.</p>
+            <p style="margin-top:1rem;">AI-powered promotions use customer-level data to offer the right discount to the right customer — maximizing margin by never discounting to customers who would have bought at full price anyway.</p>
+          </div>
+          <div class="rs-col">
+            <h4>Real Examples</h4>
+            <div class="example-tag">Walmart</div>
+            <p>Walmart's AI system adjusts prices on millions of products daily to remain competitive. Sparky, Walmart's AI assistant, generated 1 million personalized shopping lists in the back-to-school campaign, increasing basket size by 15%.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">Amazon Prime Day 2025</div>
+            <p>Amazon's AI-powered Prime Day generated $14 billion in sales, up 12% YoY. Rufus (Amazon's AI shopping assistant) recommended 100 million products and boosted conversion rates by 15%. AI-optimized logistics delivered 10 million same-day orders.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 4: Inventory -->
+      <div class="retail-stage">
+        <div class="rs-header">
+          <div class="rs-num">4</div>
+          <div class="rs-title">
+            <h3>Inventory & Supply Chain</h3>
+            <p>Matching supply to demand with machine-speed precision</p>
+          </div>
+        </div>
+        <div class="rs-body">
+          <div class="rs-col">
+            <h4>What AI Does</h4>
+            <p>AI demand forecasting ingests 100+ variables — weather, local events, social media trends, competitor promotions, economic indicators — to predict demand at the SKU-store-day level with far greater accuracy than statistical models. This reduces both stockouts (lost sales) and overstock (waste and markdowns).</p>
+            <p style="margin-top:1rem;">Computer vision systems on shelves and in warehouses monitor stock levels, detect misplaced items, and trigger automated replenishment orders — without human intervention.</p>
+          </div>
+          <div class="rs-col">
+            <h4>Real Examples</h4>
+            <div class="example-tag">Walmart VizPick</div>
+            <p>Walmart's VizPick system uses camera-equipped devices to identify shelf inventory in real time. The system reduced inventory processing time by 25%, saving $100 million annually. Walmart also avoided 30 million unnecessary driving miles through ML route optimization.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">Levi Strauss</div>
+            <p>Levi Strauss deployed predictive analytics to fine-tune inventory across stores and e-commerce channels, significantly reducing markdowns and excess inventory — one of the most expensive problems in fashion retail.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">Target</div>
+            <p>Target uses AI-equipped robots and shelf cameras to detect out-of-stock items and enforce planogram compliance in real time, reducing manual audits and improving stock availability metrics.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 5: Checkout & Fulfillment -->
+      <div class="retail-stage">
+        <div class="rs-header">
+          <div class="rs-num">5</div>
+          <div class="rs-title">
+            <h3>Checkout, Fulfillment & Last-Mile</h3>
+            <p>Frictionless payment and faster, smarter delivery</p>
+          </div>
+        </div>
+        <div class="rs-body">
+          <div class="rs-col">
+            <h4>What AI Does</h4>
+            <p>AI is eliminating the checkout bottleneck entirely. Computer vision and sensor fusion enable cashierless stores where customers simply walk out and are billed automatically. In fulfillment, AI orchestrates robot fleets, predicts delivery demand, and dynamically reroutes drivers in real time.</p>
+            <p style="margin-top:1rem;">AI fraud detection during checkout reviews hundreds of signals in milliseconds — protecting both customer and retailer from fraudulent transactions without adding friction to legitimate purchases.</p>
+          </div>
+          <div class="rs-col">
+            <h4>Real Examples</h4>
+            <div class="example-tag">Amazon Go</div>
+            <p>Amazon's Just Walk Out technology (now deployed in 3rd-party venues including airports and sports arenas) uses computer vision, deep learning, and sensor fusion to eliminate checkout entirely. Customers scan their Amazon app on entry, then just walk out with their items.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">Amazon Robotics</div>
+            <p>750,000+ robots operate across Amazon's fulfillment network, moving inventory, packing orders, and working alongside humans. AI coordinates this entire system — reducing the time from order placement to shipping to under 30 minutes for Prime members.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 6: Post-Purchase -->
+      <div class="retail-stage">
+        <div class="rs-header">
+          <div class="rs-num">6</div>
+          <div class="rs-title">
+            <h3>Post-Purchase, Loyalty & Retention</h3>
+            <p>Using AI to turn one-time buyers into lifetime customers</p>
+          </div>
+        </div>
+        <div class="rs-body">
+          <div class="rs-col">
+            <h4>What AI Does</h4>
+            <p>The most underestimated application of retail AI is retention. Predictive churn models identify customers at risk of defection weeks before they leave, enabling proactive outreach. AI-powered loyalty programs personalize rewards at the individual level — a discount on running shoes for one customer, early access to new arrivals for another.</p>
+            <p style="margin-top:1rem;">Post-purchase AI also dramatically improves customer service: intelligent bots handle returns, exchanges, and tracking queries at scale, freeing human agents for complex emotional interactions.</p>
+          </div>
+          <div class="rs-col">
+            <h4>Real Examples</h4>
+            <div class="example-tag">Walmart Sparky</div>
+            <p>Walmart's Sparky helps customers plan purchases, summarizes product reviews from thousands of data points, and handles post-purchase queries. The centralized "super agent" strategy integrates AI assistance across the entire Walmart ecosystem.</p>
+            <div class="example-tag" style="margin-top:1.25rem;">Flipkart / Myntra (India)</div>
+            <p>These platforms use ML to segment customers into micro-cohorts and run thousands of personalized win-back campaigns simultaneously. Return purchase rates improved significantly, while customer lifetime value modeling helps prioritize retention spending.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+<!-- ═══════════════════════════════════════ CH 5: PERFORMANCE ═══════════════════════════════════════ -->
+
+    <div class="chapter" id="ch5">
+      <div class="chapter-header">
+        <div class="chapter-num">Chapter 05</div>
+        <h2 class="chapter-title">Performance <em>Impact</em></h2>
+      </div>
+
+      <div class="prose">
+        <p class="lead">Numbers tell the real story. AI's impact on business performance is measurable, significant — and compounding. Organizations that move first gain data advantages, cost advantages, and talent advantages that are difficult to overcome.</p>
+      </div>
+
+      <!-- Performance table -->
+      <table class="perf-table">
+        <thead>
+          <tr>
+            <th>Function / Area</th>
+            <th>Key Metric</th>
+            <th>AI-Driven Gain</th>
+            <th>Source</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="metric">Employee Productivity</td>
+            <td>Hours saved per week</td>
+            <td class="gain">+5.4 hours/week (frequent AI users: +9h)</td>
+            <td>Federal Reserve 2025</td>
+          </tr>
+          <tr>
+            <td class="metric">Marketing ROI</td>
+            <td>Campaign engagement rate</td>
+            <td class="gain">+37% engagement / +3–5× email ROI</td>
+            <td>Multiple sources 2025</td>
+          </tr>
+          <tr>
+            <td class="metric">Customer Acquisition</td>
+            <td>Cost per acquired customer</td>
+            <td class="gain">–29% CAC reduction</td>
+            <td>Salesforce AI Index</td>
+          </tr>
+          <tr>
+            <td class="metric">E-commerce Conversion</td>
+            <td>Conversion rate from recommendations</td>
+            <td class="gain">+288% with personalized AI recommendations</td>
+            <td>E-commerce Benchmarks 2025</td>
+          </tr>
+          <tr>
+            <td class="metric">Supply Chain</td>
+            <td>Inventory & logistics cost</td>
+            <td class="gain">–15 to –25% inventory cost reduction</td>
+            <td>McKinsey / Gartner</td>
+          </tr>
+          <tr>
+            <td class="metric">Customer Service</td>
+            <td>Query resolution rate (tier-1)</td>
+            <td class="gain">50–80% resolved without human agent</td>
+            <td>Zendesk AI Report 2025</td>
+          </tr>
+          <tr>
+            <td class="metric">Financial Reporting</td>
+            <td>Month-end close time</td>
+            <td class="gain">–50 to –70% close time</td>
+            <td>Vena Finance AI 2025</td>
+          </tr>
+          <tr>
+            <td class="metric">Fraud Detection</td>
+            <td>Annual fraud losses blocked</td>
+            <td class="gain">$40B+ annually (Visa)</td>
+            <td>Visa AI Program</td>
+          </tr>
+          <tr>
+            <td class="metric">Manufacturing QA</td>
+            <td>Defect rate reduction</td>
+            <td class="gain">–30% defects detected (BMW)</td>
+            <td>BMW Production AI</td>
+          </tr>
+          <tr>
+            <td class="metric">Legal Document Review</td>
+            <td>Processing time vs. manual</td>
+            <td class="gain">60× faster (360K hours → seconds)</td>
+            <td>JPMorgan / COIN System</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="pullquote">
+        <p>"The companies seeing the greatest success are those that use AI not just to automate, but to amplify existing human skills and talents."</p>
+        <cite>Qualtrics State of AI 2025</cite>
+      </div>
+
+      <!-- The gap between leaders and laggards -->
+      <div class="prose">
+        <p>Perhaps the most important performance insight is the widening gap between AI leaders and laggards. <em>AI high performers</em> — the 6% of organizations generating 5%+ EBIT impact from AI — share a specific playbook: they treat AI as a catalyst for transformation rather than a tool for incremental efficiency. They are three times more likely to intend transformative change, and they redesign workflows rather than just automating existing ones.</p>
+        <p>The failure rate is real: 70–85% of AI initiatives fail to meet expected outcomes, and 42% of companies abandoned most initiatives in 2025. The root causes are consistent: insufficient data quality, skill gaps (the #1 barrier according to Deloitte), failure to redesign workflows around AI capabilities, and inadequate governance frameworks.</p>
+      </div>
+
+    </div>
+
+<!-- ═══════════════════════════════════════ CH 6: PERSONAL AI ═══════════════════════════════════════ -->
+
+    <div class="chapter" id="ch6">
+      <div class="chapter-header">
+        <div class="chapter-num">Chapter 06</div>
+        <h2 class="chapter-title">How to Master <em>AI Personally</em></h2>
+      </div>
+
+      <div class="prose">
+        <p class="lead">AI literacy is the defining professional skill of this decade. Across every industry and seniority level, the gap between those who can effectively leverage AI and those who cannot is becoming a primary driver of career trajectory and organizational impact.</p>
+        <p>The goal is not to become a data scientist. It is to develop a working relationship with AI tools — knowing when to use them, how to direct them effectively, and how to critically evaluate their outputs. This requires developing four core capabilities:</p>
+      </div>
+
+      <div class="skill-pillars">
+        <div class="skill-pillar">
+          <div class="sp-num">1</div>
+          <h3>Prompt Engineering & Communication</h3>
+          <p>The quality of your AI outputs is directly proportional to the quality of your inputs. Effective prompting is a learnable skill — one that typically produces 10× better results than naive questioning.</p>
+          <ul>
+            <li>Be specific about context, role, format, and constraints</li>
+            <li>Use examples (few-shot prompting) for complex tasks</li>
+            <li>Break complex problems into step-by-step chains</li>
+            <li>Iterate: treat first outputs as drafts, not finals</li>
+            <li>Ask AI to critique its own outputs</li>
+            <li>Specify what NOT to do, not just what to do</li>
+          </ul>
+        </div>
+
+        <div class="skill-pillar">
+          <div class="sp-num">2</div>
+          <h3>Critical Evaluation & Verification</h3>
+          <p>AI systems are confident even when wrong. The ability to critically evaluate AI outputs — detecting hallucinations, biases, and logical errors — is as important as the ability to generate them.</p>
+          <ul>
+            <li>Never use AI outputs without reading them carefully</li>
+            <li>Cross-verify factual claims with primary sources</li>
+            <li>Check for logical consistency and internal contradictions</li>
+            <li>Be especially skeptical of specific numbers and dates</li>
+            <li>Use multiple AI tools for high-stakes decisions</li>
+            <li>Maintain healthy skepticism as a professional habit</li>
+          </ul>
+        </div>
+
+        <div class="skill-pillar">
+          <div class="sp-num">3</div>
+          <h3>Workflow Integration & Automation</h3>
+          <p>The biggest productivity gains come not from using AI occasionally, but from systematically embedding it into your daily workflows — turning hours of work into minutes.</p>
+          <ul>
+            <li>Map your recurring tasks and identify AI-suitable ones</li>
+            <li>Build personal prompt libraries for common use cases</li>
+            <li>Combine AI tools with no-code automation (Zapier, Make)</li>
+            <li>Use AI to generate first drafts — own the editing</li>
+            <li>Create templates and frameworks you can reuse</li>
+            <li>Track time saved and reinvest it strategically</li>
+          </ul>
+        </div>
+
+        <div class="skill-pillar">
+          <div class="sp-num">4</div>
+          <h3>Strategic AI Thinking</h3>
+          <p>The highest-value AI skill is strategic: knowing which problems AI can solve, how to frame them correctly, and how to combine AI with human judgment to make better decisions.</p>
+          <ul>
+            <li>Learn to distinguish AI-suitable from human-essential tasks</li>
+            <li>Understand the economics of AI implementation</li>
+            <li>Stay current — follow AI research, releases, and case studies</li>
+            <li>Build cross-functional AI knowledge, not just your domain</li>
+            <li>Advocate for ethical AI use in your organization</li>
+            <li>Think about second-order effects of AI decisions</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="divider"><span>The Learning Path</span></div>
+
+      <!-- Learning Roadmap -->
+      <h3 style="font-family:var(--ff-head);font-size:1.6rem;font-weight:700;margin:2rem 0 1.5rem;color:var(--ink);">Your 90-Day AI Mastery Roadmap</h3>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--accent2);">30</div>
+          <div class="tl-content">
+            <div class="tl-era">Days 1–30 · Foundation</div>
+            <h4>Immerse and Experiment</h4>
+            <p>Spend 30 minutes daily with AI tools — ChatGPT, Claude, Gemini. Use them for your actual work tasks: drafting emails, summarizing documents, researching topics, debugging code, analyzing data. Keep a prompt journal. Don't optimize yet — just accumulate experience and build intuition for what works.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--accent3);">60</div>
+          <div class="tl-content">
+            <div class="tl-era">Days 31–60 · Integration</div>
+            <h4>Build Your AI Toolkit</h4>
+            <p>Identify your top 5 recurring tasks and build AI workflows for each. Learn domain-specific AI tools in your field. Create reusable prompt templates. Read at least one AI case study per week from your industry. Identify the single biggest AI opportunity in your role and design a pilot project.</p>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot" style="background:var(--gold);">90</div>
+          <div class="tl-content">
+            <div class="tl-era">Days 61–90 · Leadership</div>
+            <h4>Teach, Advocate, and Scale</h4>
+            <p>Share your AI workflow wins with your team. Propose one AI-enabled initiative to your manager. Learn the basics of AI evaluation and safety. Start following AI researchers and practitioners. The goal: become your team's go-to person for AI questions — the bridge between technical capability and business application.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="pullquote">
+        <p>"AI high performers aren't necessarily the most technical people in the room. They're the ones who ask better questions — and know how to translate AI capabilities into real business value."</p>
+        <cite>McKinsey State of AI 2025</cite>
+      </div>
+
+      <div class="prose">
+        <p><strong>What to focus on first.</strong> If you have limited time, prioritize large language models (Claude, ChatGPT, Gemini) for your immediate professional context. These tools deliver value from day one without any technical setup. Then expand to AI-enhanced versions of tools you already use: Microsoft Copilot if you're in the Microsoft ecosystem, Google Gemini if you use Workspace, Notion AI if you use Notion. The goal is progressive embedding — AI woven into every hour of your workday, not just reserved for special occasions.</p>
+        <p><strong>The mindset shift.</strong> The most important transition is moving from "can AI do this?" to "how should I and AI work together on this?" The best outcomes consistently come from human-AI collaboration — human judgment for context, ethics, and creative direction; AI for speed, breadth, and tireless execution. Neither alone is as powerful as both together.</p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CLOSING ═══════════════════════════════════════ -->
+<div class="closing-block">
+  <h2>The Intelligent Enterprise<br>Starts With You</h2>
+  <p>AI adoption is not a technology decision — it is a human decision about how to work, learn, and compete. Organizations that thrive will be those that develop AI fluency across every level.</p>
+  <div class="action-cards">
+    <div class="action-card">
+      <h4>Start Today</h4>
+      <p>Open an AI tool and complete one real work task with it before the end of today. Imperfect action beats perfect planning.</p>
+    </div>
+    <div class="action-card">
+      <h4>Go Deeper</h4>
+      <p>Take a free AI fundamentals course. Read one peer-reviewed AI paper per month. Follow primary sources, not just news summaries.</p>
+    </div>
+    <div class="action-card">
+      <h4>Lead Change</h4>
+      <p>Be the person who brings AI knowledge into strategy conversations — bridging technical capability with business reality.</p>
+    </div>
+  </div>
+</div>
+
+<footer style="background:var(--ink2);padding:2rem 4rem;display:flex;justify-content:space-between;align-items:center;">
+  <span style="font-family:var(--ff-mono);font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;">AI IN BUSINESS · COMPREHENSIVE ANALYSIS · 2025–2026</span>
+  <span style="font-family:var(--ff-mono);font-size:11px;color:rgba(255,255,255,0.3);letter-spacing:0.1em;">Sources: Deloitte, McKinsey, Stanford HAI, Shopify, OpenAI</span>
+</footer>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const docEl = document.documentElement;
+    const scrollTop = docEl.scrollTop || document.body.scrollTop;
+    const scrollHeight = docEl.scrollHeight - docEl.clientHeight;
+    const pct = (scrollTop / scrollHeight) * 100;
+    document.getElementById('progressBar').style.width = pct + '%';
+  });
+
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+</script>
+</body>
+</html>
